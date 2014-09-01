@@ -1,0 +1,12 @@
+#exportPattern("^[[:alpha:]]+")
+
+## utility functions
+export(transformTo,strand2Num)
+## plotting functions
+export(plotFeatures,plotAssignmentX,plotData)
+## color utils...
+export(value2Color,colorLegend)
+
+### get all methods and functions from GenomicRanges and IRanges:
+import(GenomicRanges,IRanges)
+

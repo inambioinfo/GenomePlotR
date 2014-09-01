@@ -1,0 +1,11 @@
+Package: GenomePlotR
+Type: Package
+Title: Plotting data in genomic context
+Version: 0.1.2
+Date: 2013-05-29
+Author: Johannes Rainer
+Maintainer: Johannes Rainer <johannes.rainer@i-med.ac.at>
+Depends: RColorBrewer (>= 1.0.0), methods (>= 1.0.0), GenomicRanges (>= 1.0.0), IRanges (>= 1.10.0), lattice (>= 0.10)
+Description: Function to plot transcripts, genes or other features together with data (e.g. microarray probe data or sequencing data) on genomic coordinates.
+License: LGPL
+LazyLoad: yes

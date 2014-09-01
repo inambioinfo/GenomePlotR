@@ -1,0 +1,61 @@
+#+TITLE:GenomePlotR R package
+#+AUTHOR: Johannes Rainer
+#+email: johannes.rainer@i-med.ac.at
+#+OPTIONS: ^:{}
+#+INFOJS_OPT:
+#+PROPERTY: exports code
+#+PROPERTY: session *R*
+#+PROPERTY: noweb yes
+#+PROPERTY: results output
+#+PROPERTY: tangle yes
+#+STARTUP: overview
+#+INFOJS_OPT: view:t toc:t ltoc:t mouse:underline buttons:0 path:http://thomasf.github.io/solarized-css/org-info.min.js
+#+HTML_HEAD: <link rel='stylesheet' type='text/css' href='http://thomasf.github.io/solarized-css/solarized-light.min.css' />
+#+LATEX_HEADER: \usepackage[backend=bibtex,style=chem-rsc,hyperref=true]{biblatex}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \setlength{\textwidth}{17.0cm}
+#+LATEX_HEADER: \setlength{\hoffset}{-2.5cm}
+#+LATEX_HEADER: \setlength{\textheight}{22cm}
+#+LATEX_HEADER: \setlength{\voffset}{-1.5cm}
+#+LATEX_HEADER: \addbibresource{~/Documents/Unison/Papers2/bib/references.bib}
+#+LATEX_HEADER: \usepackage{verbatim}
+#+LATEX_HEADER: \usepackage{inconsolata}
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \def\verbatim@font{\scriptsize\ttfamily}
+#+LATEX_HEADER: \makeatother
+-----
+
+* Description
+
+This =R= package provides functionality to plot data in genomic context. These include functions to plot transcripts, genes or other features together with data (e.g. microarray probe data or sequencing data) on genomic coordinates.
+
+** Installation
+
++ Check out the source code from github:
+
+#+BEGIN_EXAMPLE
+  git clone https://github.com/jotsetung/GenomePlotR.git
+#+END_EXAMPLE
+
++ Install the package.
+
+#+BEGIN_EXAMPLE
+  R CMD INSTALL GenomePlotR
+#+END_EXAMPLE
+
+** Usage
+
+Refer to the help pages and function descriptions from within =R=, e.g. start the help system and open it in your browser (type =help.start()= in your =R= session) and click on =Packages= and the link for the =GenomePlotR= package.
+
+* Development
+
+Please add new functions or improve existing ones. New functions should be documented (=Rd= format) and listed in this document (=README.org=). This file should then be exported as a markdown (=md=) file (best performed in Emacs org-mode =c-c c-e=).
+
+** Authors
+
++ Johannes Rainer
+
+(please add your name to this (=README.org=) file if you edit the code or add new functionality).
+
+** TODOs
+
