@@ -212,13 +212,13 @@ setMethod( "plotFeatures", "data.frame", function( x , strand.arrows=FALSE, rect
   if( is.null( group.by ) ){
     rectheight <- diff( range( ybottom ) ) / spacing
     ## plot all in one line!
-    Color <- color    
+    Color <- color
     if( !is.null( color.col ) ){ Color <- x[ , color.col ] }
     Border <- border
     if( !is.null( border.col ) ){ Border <- x[ , border.col ] }
     rect( ybottom=ybottom+y0, ytop=ytop+y0, xleft=x[ , start.col ]+x0, xright=x[ , end.col ]+x0, col=Color, border=Border )
     if( !is.null( label.col ) ){
-      text( x=x[ , start.col ] + ( x[ , end.col ]-x[ , end.col ] ) / 2, y=ycenter, labels=x[ , label.col ], col=label.color, cex=label.cex, adj=c( 0.5, 0.5 ) )     
+      text( x=x[ , start.col ] + ( x[ , end.col ]-x[ , end.col ] ) / 2, y=ycenter, labels=x[ , label.col ], col=label.color, cex=label.cex, adj=c( 0.5, 0.5 ) )
     }
   }
   else{
@@ -245,7 +245,7 @@ setMethod( "plotFeatures", "data.frame", function( x , strand.arrows=FALSE, rect
       if( !is.null( coding.start.col ) ){
         coding.start <- x.sub[ , coding.start.col ][ 1 ]
         coding.end <- x.sub[ , coding.end.col ][ 1 ]
-        if( !is.na( coding.start ) & !is.na( coding.end ) ){
+        if( !is.na( coding.start ) & !is.na( coding.end ) & !( coding.start==0 & coding.end==0 ) ){
           ## transform it...
           if( !is.null( transform.range.x ) ){
             coding.start <- transformTo( coding.start, old.range=x.range.original, new.range=transform.range.x )
@@ -267,7 +267,7 @@ setMethod( "plotFeatures", "data.frame", function( x , strand.arrows=FALSE, rect
             the.border.color <- x.sub[ 1, coding.border.col ]
           }else{
             the.border.color <- coding.border
-          }          
+          }
           rect( xleft=x.left.coding, xright=x.right.coding, ybottom=ybottom[ i ], ytop=ytop[ i ], col=the.coding.color, border=the.border.color )
         }
       }
@@ -288,7 +288,7 @@ setMethod( "plotFeatures", "data.frame", function( x , strand.arrows=FALSE, rect
         if( any( do.highlight ) ){
           rect( xleft=x.left[ do.highlight ], xright=x.right[ do.highlight ], ybottom=ybottom[ i ], ytop=ytop[ i ], border=x.sub[ do.highlight, highlight.border.col ] )
         }
-      }      
+      }
       ## adding a label... if needed.
       if( !is.null( label.col ) ){
         the.label.color <- label.color
