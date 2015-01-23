@@ -6,6 +6,9 @@ export(transformTo,strand2Num)
 export(plotFeatures,plotAssignmentX,plotData)
 ## color utils...
 export(value2Color,colorLegend)
+##
+export( plotRle )
+exportMethods( plot )
 
 ### get all methods and functions from GenomicRanges and IRanges:
 import(GenomicRanges,IRanges)
