@@ -1,8 +1,7 @@
 Package: GenomePlotR
 Type: Package
 Title: Plotting data in genomic context
-Version: 0.1.4
-Date: 2015-01-23
+Version: 0.1.5
 Author: Johannes Rainer
 Maintainer: Johannes Rainer <johannes.rainer@eurac.edu>
 Depends: RColorBrewer (>= 1.0.0), methods (>= 1.0.0), GenomicRanges (>= 1.0.0), IRanges (>= 1.10.0), lattice (>= 0.10)

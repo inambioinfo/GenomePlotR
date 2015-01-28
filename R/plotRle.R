@@ -24,3 +24,53 @@ if( !isGeneric( "plot", ) )
 setMethod( "plot", "Rle", function( x, y, ... ){
     plotRle( x, ... )
 } )
+
+## that's like the boxplot.stats function... just for Rle...
+rleboxplot.stats <- function( x, coef=1.5, do.conf=TRUE, do.out=FALSE ){
+    quants <- quantile( x, probs=c( 0.25, 0.5, 0.75 ) )
+    iqr <- quants[ 3 ] - quants[ 1 ]
+    if( coef > 0 ){
+        Ranges <- range( x[ x <= ( quants[ 3 ] + coef * iqr ) & x >= ( quants[ 1 ] - coef * iqr ) ] )
+    }else{
+        Ranges <- range( x )
+    }
+    n <- length( x )
+    conf <- if( do.conf )
+                quants[ 2 ] + c( -1.58, 1.58 ) * iqr/sqrt( n )
+    out <- numeric()
+    if( do.out & coef > 0) {
+        ## returning all these outliers... as numeric vector!!! might be pretty large...
+        out <- as.numeric( x[ x > ( quants[ 3 ] + coef * iqr ) | x < ( quants[ 1 ] - coef * iqr ) ] )
+    }
+    Vals <- list( stats=c( Ranges[ 1 ], quants, Ranges[ 2 ] ),
+                 n=n,
+                 conf=conf,
+                 out=out )
+    return( Vals )
+}
+
+## primitive boxplot function; works with Rle's and also numeric vectors.
+rleboxplot <- function( x, range=1.5, ... ){
+    ## have to make a matrix of stats...
+    Vals <- rleboxplot.stats( x, coef=range )
+    stats <- matrix( 0, nrow=5L, ncol=1 )
+    conf <- matrix( 0, nrow=2L, ncol=1 )
+    stats[ , 1 ] <- Vals$stats
+    conf[ , 1 ] <- Vals$conf
+    z <- list( stats=stats,
+              n=Vals$n,
+              conf=conf,
+              out=Vals$out,
+              group=numeric(0L),
+              names=NA )
+    bxp( z=z, ... )
+}
+
+## define a method boxplot for the Rle
+setMethod( "boxplot", "Rle", function( x, range=1.5, ... ){
+    rleboxplot( x, range=range, ... )
+} )
+
+
+
+
